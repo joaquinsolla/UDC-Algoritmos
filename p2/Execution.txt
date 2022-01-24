@@ -1,0 +1,1 @@
+gcc P2.c  -o P2 -lm

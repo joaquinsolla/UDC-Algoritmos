@@ -1,0 +1,189 @@
+INFORME P2 DE ALGORITMOS - ORDENACIÓN POR INSERCIÓN Y ORDENACIÓN SHELL
+
+[Grupo 2.5]
+ - Joaquín Solla Vázquez <joaquin.solla@udc.es>
+ - Fernando Añón Blanco  <fernando.anon.blanco@udc.es>
+
+OBJETIVO: Esta práctica consiste en ordenar ascendentemente un vector de n números enteros. 
+Como algoritmos de ordenación se utilizarán la ordenación por insercion y la ordenación shell.
+
+EQUIPO:
+    Ordenador: Lenovo ideapad 310-15ISK
+    Procesador: Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
+    Memoria RAM: 8 GB
+    SO: KDE neon User Edition 5.20 x86_64
+
+NOTACION: (*) => Implica que el algoritmo se ha repetido 1.000 veces
+
+                            ####################
+                            # INICIALIZACIONES #
+                            ####################
+Inicializacion aleatoria:
+   0 -10  11   5 -11  -1 -12  -8  -3  10 -14  -6   6 -13 -17  14  12
+ordenado? 0
+
+Ordenacion por Shell:
+ -17 -14 -13 -12 -11 -10  -8  -6  -3  -1   0   5   6  10  11  12  14
+ordenado? 1
+
+Inicializacion descendente: 
+  17  16  15  14  13  12  11  10   9   8   7   6   5   4   3   2   1
+ordenado? 0
+
+Ordenacion por Shell:
+   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+ordenado? 1
+
+Inicializacion ascendente: 
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16
+ordenado? 1
+
+Ordenacion por Shell:
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16
+ordenado? 1
+
+
+Inicializacion aleatoria:
+  -1 -15  -7 -12 -13   8  14   6   5 -15   1  -9  -7  -7 -15   1 -14
+ordenado? 0
+
+Ordenacion por inserción:
+ -15 -15 -15 -14 -13 -12  -9  -7  -7  -7  -1   1   1   5   6   8  14
+ordenado? 1
+
+Inicializacion descendente: 
+  17  16  15  14  13  12  11  10   9   8   7   6   5   4   3   2   1
+ordenado? 0
+
+Ordenacion por inserción:
+   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+ordenado? 1
+
+Inicializacion ascendente: 
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16
+ordenado? 1
+
+Ordenacion por inserción:
+   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16
+ordenado? 1
+
+
+
+Los tiempos en microsegundos de los algoritmos son los siguientes:
+
+                            ####################
+                            # ORDENACIÓN SHELL #
+                            ####################
+
+# Ordenación Shell con inicializacion desordenada
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.15    t(n)/n^1.30
+            500         59.529       0.119058       0.046872       0.018453	(*)
+           1000        138.567       0.138567       0.049165       0.017445	(*)
+           2000        317.470       0.158735       0.050760       0.016232	(*)
+           4000        761.000       0.190250       0.054830       0.015802
+           8000       1667.000       0.208375       0.054123       0.014058
+          16000       3716.000       0.232250       0.054367       0.012727
+          32000       8658.000       0.270562       0.057081       0.012043
+    
+# Ordenación Shell con inicializacion ascendente
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.15    t(n)/n^1.30
+            500         16.380       0.032760       0.012897       0.005078	(*)
+           1000         37.367       0.037367       0.013258       0.004704	(*)
+           2000         84.232       0.042116       0.013468       0.004307	(*)
+           4000        186.386       0.046596       0.013429       0.003870	(*)
+           8000        410.435       0.051304       0.013326       0.003461	(*)
+          16000        900.000       0.056250       0.013168       0.003082
+          32000       1946.000       0.060812       0.012830       0.002707
+    
+# Ordenación Shell con inicializacion descendente
+              n           t(n)    t(n)/n^1.00    t(n)/n^1.15    t(n)/n^1.30
+            500         24.002       0.048004       0.018899       0.007440	(*)
+           1000         54.427       0.054427       0.019311       0.006852	(*)
+           2000        120.241       0.060121       0.019225       0.006148	(*)
+           4000        266.198       0.066549       0.019179       0.005527	(*)
+           8000        579.000       0.072375       0.018799       0.004883
+          16000       1271.000       0.079437       0.018595       0.004353
+          32000       2748.000       0.085875       0.018117       0.003822
+
+COTAS:
+ - Inferior: n^1
+ - Ajustada: n^1.15
+ - Sobreestimada: n^1.3
+    
+NOTAS: Al revisar las tablas de la tercera repetición de los algoritmos de ordenación Shell 
+podemos comprobar que el algoritmo responde mejor ante las inicializaciones ordenadas de 
+forma ascendente.
+Mientras que los mejores tiempos se obtienen con la inicialización ascendente, los peores se 
+obtienen con mucha diferencia sobre todo cuanto más grande es la n, con la inicialización 
+desordenada que sigue una tendencia más exponencial que los otros dos, los cuales presentan 
+un crecimiento más semejante, aunque a mayor valor n, estos más se separan.
+
+
+
+                            ############################
+                            # ORDENACIÓN POR INSERCION #
+                            ############################
+                            
+# Ordenacion por insercion con inicializacion desordenada
+              n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+            500        180.882       0.002508       0.000724       0.000209	(*)
+           1000        687.000       0.002735       0.000687       0.000173
+           2000       2904.000       0.003320       0.000726       0.000159
+           4000      11173.000       0.003668       0.000698       0.000133
+           8000      44636.000       0.004208       0.000697       0.000116
+          16000     181767.000       0.004922       0.000710       0.000102
+          32000     718152.000       0.005584       0.000701       0.000088
+
+# Ordenacion por insercion con inicializacion ascendente
+              n           t(n)    t(n)/n^0.80    t(n)/n^1.00    t(n)/n^1.20
+            500          1.993       0.013814       0.003986       0.001150	(*)
+           1000          3.784       0.015064       0.003784       0.000950	(*)
+           2000          7.653       0.017499       0.003826       0.000837	(*)
+           4000         15.377       0.020194       0.003844       0.000732	(*)
+           8000         30.272       0.022833       0.003784       0.000627	(*)
+          16000         61.463       0.026627       0.003841       0.000554	(*)
+          32000        123.092       0.030627       0.003847       0.000483	(*)
+
+# Ordenacion por insercion con inicializacion descendente
+              n           t(n)    t(n)/n^1.80    t(n)/n^2.00    t(n)/n^2.20
+            500        352.653       0.004889       0.001411       0.000407	(*)
+           1000       1405.000       0.005593       0.001405       0.000353
+           2000       5658.000       0.006469       0.001414       0.000309
+           4000      22370.000       0.007344       0.001398       0.000266
+           8000      89611.000       0.008449       0.001400       0.000232
+          16000     359188.000       0.009725       0.001403       0.000202
+          32000    1436129.000       0.011167       0.001402       0.000176
+    
+COTAS:
+ · Inicialización Ascendente
+    - Inferior: n^0.8
+    - Ajustada: n^1
+    - Sobreestimada: n^1.2
+
+ · Inicialización Descendente y Aleatoria
+    - Interior: n^1.8
+    - Ajustada: n^2
+    - Sobreestimada: n^2.2
+
+NOTAS: Tras observar las tablas de la tercera repetición del algoritmo de ordenación por 
+inserción se puede llegar a la conclusión de que este se beneficia de que la inicialización 
+se produzca mediante valores ordenados ascendentemente. Y ante la que peor reacciona es 
+ante la inicialización que peor reacciona es a la inicialización descendente, sobre todo 
+cuanto mayor es la n.
+
+
+---
+CONCLUSIÓN - COMPARACIÓN DE AMBOS EN FUNCIÓN DE LA INICIALIZACIÓN
+# Inicializacion Desordenada
+En el supuesto caso de que supiesemos de antemano que los valores que nos van a ser 
+entregados están desordenados, el algoritmo que escogeríamos para gestionarlo es el de 
+ordenación por inserción, el cual reacciona mucho mejor.
+
+# Inicialización Ascendente
+Ante una inicializacion ascendente el mejor algoritmo es el de ordenación por inserción, el 
+cual consigue unos tiempos mucho más bajos ante el aumento de n.
+
+# Inicialización Descendente
+El algoritmo que deberíamos usar ante una inicialización descendente es el de ordenación Shell 
+porque en el algoritmo de ordenación por inserción sigue una tendencia exponencial ante un n 
+grande como puede ser 3200 demasiado alta.
