@@ -1,0 +1,72 @@
+INFORME P1 DE ALGORITMOS (FIBONACCI)
+
+Joaquín Solla Vázquez
+Fernando Añón Blanco
+
+Grupo 2.5
+
+Esta práctica consiste en analizar 3 algoritmos diferentes que calculan el elemento
+n en la sucesión de Fibonacci y deducir la complejidad de estos tras medir sus 
+tiempos. Los algortimos fueron programados en C.
+
+En esta práctica los tiempos fueron medidos en un portatil Lenovo T420, con un 
+procesador de 64 bits Intel® Core™ i7-2640M, trabando a 2.80 GHz con una RAM de 8 GB.
+El sistema operativo es Ubuntu 20.04.1 LTS.
+
+Los tiempos de los algoritmos fueron medidos en microsegundos, son los siguientes:
+
+(PARÁMETROS)
+n: posición en la sucesión de Fibonacci a obtener
+t: tiempo de ejecución (microsegundos)
+x: cota subestimada
+y: O
+z: cota sobreestimada
+
+FIB1
+	   N		  T		X		Y		Z
+           2	         0.0350	       0.028926	       0.013369	       0.008750		*
+           4	         0.1110	       0.075814	       0.016195	       0.006938		*
+           8	         0.7820	       0.364809	       0.016646	       0.003055		*
+          16	        15.8820	       3.456386	       0.007196	       0.000242		*
+          32	     20097.0000	     951.842972	       0.004126	       0.000005	
+
+FIB2
+	   N		  T		X		Y		Z
+        1000	         4.8740	       0.019404	       0.004874	       0.000706		*
+       10000	        46.1480	       0.029117	       0.004615	       0.000501		*
+      100000	       513.0000	       0.051300	       0.005130	       0.000446	
+     1000000	      4684.0000	       0.074236	       0.004684	       0.000339	
+    10000000	     46278.0000	       0.116245	       0.004628	       0.000287	
+
+FIB3
+	   N		  T		X		Y		Z
+        1000	         0.0650	       0.024731	       0.009410	       0.002055		*
+       10000	         0.0850	       0.028008	       0.009229	       0.000850		*
+      100000	         0.1050	       0.030945	       0.009120	       0.000332		*
+     1000000	         0.1140	       0.030671	       0.008252	       0.000114		*
+    10000000	         0.1320	       0.032879	       0.008190	       0.000042		*
+
+
+*En caso de que la ejecución de un algoritmo dé un tiempo inferior a 500 microsegundos, 
+la medición se realizará ejecutando ejecutando el algoritmo 1000 veces (try=1000). Es
+decir, el tiempo se medirá de la siquiente forma t=(t2-t1)/try.
+
+Las cotas han sido calculadas de la siguiente manera:
+
+	FIB1:
+		x= t/(pow(1.1, n))
+		y= t/(pow(((1+sqrt(5))/2), n))
+		z= t/(pow(2, n))
+	FIB2:
+		x= t/(pow(n, 0.8))
+		y= t/(n)
+		z= t/(n*(log(n)))
+	FIB3:
+		x= t/(sqrt(log(n)))
+		y= t/(log(n))
+		z= t/(pow(n, 0.5))
+		
+Analizando los resultados sededuce que el algoritmo fib3 obtiene tiempos mucho más pequeños
+que los otros dos algoritmos siempre, por lo que este es mucho más rápido y eficaz que 
+ellos. Además, a medida que la n crece, el tiempo de fib1 y fib2 aumenta considerablemente
+mientras que el de fib3 apenas crece.
