@@ -1,0 +1,193 @@
+INFORME P4 DE ALGORITMOS - ORDENACIÓN RÁPIDA
+
+[Grupo 2.5]
+ - Joaquín Solla Vázquez <joaquin.solla@udc.es>
+ - Fernando Añón Blanco  <fernando.anon.blanco@udc.es>
+
+OBJETIVO: El objetivo de esta práctica es calcular empíricamente la complejidad del algoritmo de ordenación para cada una de las situaciones iniciales del vector y cada uno de los umbrales.
+    El algoritmo Quicksort se encarga de ordenar ascendentemente un vector desordenado, aunque el resultado de ordenación perfecto se consigue pasando en última instancia el algoritmo de ordenación por insercción.
+
+EQUIPO:
+    Ordenador: Lenovo ideapad 310-15ISK
+    Procesador: Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
+    Memoria RAM: 8 GB
+    SO: KDE neon User Edition 5.20 x86_64
+
+NOTACION: (*) => Implica que el algoritmo se ha repetido 1.000 veces dado que su tiempo de ejecución en microsegundos era menor a 500.
+          (X) => Existe una anomalía
+
+                            ####################
+                            # INICIALIZACIONES #
+                            ####################
+Vector desordenado:
+   4   3   0   7  -2   2  -5   5  -7   8
+ordenado? 0
+
+Vector ordenado con umbral 1:
+  -7  -5  -2   0   2   3   4   5   7   8
+ordenado? 1
+
+Vector desordenado:
+  -6   1   9   4   8  10   9  -2  -5   9
+ordenado? 0
+
+Vector ordenado con umbral 10:
+  -6  -5  -2   1   4   8   9   9   9  10
+ordenado? 1
+
+Vector desordenado:
+  -4   6   7   3  -3  -4   9   4   9   4
+ordenado? 0
+
+Vector ordenado con umbral 100:
+  -4  -4  -3   3   4   4   6   7   9   9
+ordenado? 1
+
+Los tiempos en microsegundos del algoritmo atendiendo al umbral son los siguientes:
+
+                            ############################
+                            # INICIALIZACIÓN ALEATORIA #
+                            ############################
+                            
+UMBRAL 1:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.825)*log(n)    t/(n^2.000)*log(n)
+       500        159.339             0.0012318             0.0003043             0.0001026     (*)
+      1000        587.000             0.0013468             0.0002846             0.0000850
+      2000       2837.000             0.0019514             0.0003529             0.0000933 X
+      4000       8669.000             0.0018026 X           0.0002789             0.0000653
+      8000      45853.000             0.0029027             0.0003842             0.0000797 X
+     16000     162070.000             0.0031421             0.0003559             0.0000654
+     32000     680247.000             0.0040598             0.0003934             0.0000640
+
+UMBRAL 10:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.825)*log(n)    t/(n^2.000)*log(n)
+       500        163.289             0.0012624             0.0003118             0.0001051     (*)
+      1000        735.000             0.0016864             0.0003564             0.0001064
+      2000       1566.000             0.0010772 X           0.0001948             0.0000515 X
+      4000      11018.000             0.0022911             0.0003545             0.0000830
+      8000      39433.000             0.0024963             0.0003304             0.0000686
+     16000     156142.000             0.0030272             0.0003429             0.0000630
+     32000     730671.000             0.0043607             0.0004226             0.0000688
+
+UMBRAL 100:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.825)*log(n)    t/(n^2.000)*log(n)
+       500        161.380             0.0012476             0.0003082             0.0001039     (*)
+      1000        756.000             0.0017345             0.0003666             0.0001094
+      2000       2700.000             0.0018572             0.0003358             0.0000888
+      4000      11416.000             0.0023738             0.0003673             0.0000860
+      8000      49561.000             0.0031374             0.0004153             0.0000862
+     16000     124895.000             0.0024214 X           0.0002742             0.0000504 X
+     32000     692723.000             0.0041342             0.0004006             0.0000652
+
+COTAS
+ - Inferior: (n^1.600)*log(n)
+ - Ajustada: (n^1.825)*log(n)       Constante a la que tiende: 0.0003363
+ - Sobreestimada: (n^2.000)*log(n)
+
+
+ NOTAS: Analizando los tiempos de ejecución del algoritmo, que en este caso trabaja con un vector con una inicialización aleatoria, podemos deducir que el umbral que mejores resultados obtiene es el 100 aunque el algoritmo con umbral 1 tiene unos tiempos muy similares de ejecución al principio.
+ 
+ 
+                            ##############################
+                            # INICIALIZACIÓN DESCENDENTE #
+                            ##############################
+                            
+UMBRAL 1:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.875)*log(n)    t/(n^2.100)*log(n)
+       500        362.354             0.0028013             0.0005072             0.0001253     (*)
+      1000       1411.000             0.0032374             0.0004844             0.0001024
+      2000       5485.000             0.0037728             0.0004665             0.0000844
+      4000      23471.000             0.0048806             0.0004988             0.0000772
+      8000     109141.000             0.0069091             0.0005835             0.0000772
+     16000     360652.000             0.0069921             0.0004881             0.0000553
+     32000    1418807.000             0.0084676             0.0004885             0.0000473
+
+UMBRAL 10:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.875)*log(n)    t/(n^2.100)*log(n)
+       500        378.848             0.0029289             0.0005303             0.0001310     (*)
+      1000       1465.000             0.0033612             0.0005029             0.0001063
+      2000       5782.000             0.0039771             0.0004918             0.0000889
+      4000      24929.000             0.0051837             0.0005298             0.0000820
+      8000     114320.000             0.0072369             0.0006112             0.0000809
+     16000     373962.000             0.0072501             0.0005061             0.0000573
+     32000    1455722.000             0.0086879             0.0005012             0.0000486
+
+UMBRAL 100:
+         n           t(n)    t/(n^1.600)*log(n)    t/(n^1.875)*log(n)    t/(n^2.100)*log(n)
+       500        358.751             0.0027735             0.0005021             0.0001240     (*)
+      1000       1467.000             0.0033658             0.0005036             0.0001064
+      2000       5623.000             0.0038677             0.0004783             0.0000865
+      4000      23225.000             0.0048294             0.0004935             0.0000764
+      8000      92814.000             0.0058755             0.0004962             0.0000657
+     16000     365348.000             0.0070831             0.0004944             0.0000560
+     32000    1445907.000             0.0086293             0.0004978             0.0000482
+                    
+COTAS
+ - Inferior: (n^1.600)*log(n)
+ - Ajustada: (n^1.875)*log(n)       Constante a la que tiende: 0.0004951
+ - Sobreestimada: (n^2.100)*log(n)
+                            
+ 
+                            #############################
+                            # INICIALIZACIÓN ASCENDENTE #
+                            #############################
+
+UMBRAL 1:
+         n           t(n)    t/(n^0.700)*log(n)    t/(n^0.860)*log(n)    t/(n^1.000)*log(n)
+       500          3.177             0.0065967             0.0024406             0.0010224     (*)
+      1000          6.253             0.0071904             0.0023810             0.0009052     (*)
+      2000         13.084             0.0084169             0.0024945             0.0008607     (*)
+      4000         26.405             0.0095825             0.0025418             0.0007959     (*)
+      8000         50.515             0.0104144             0.0024725             0.0007026     (*)
+     16000         99.056             0.0116709             0.0024800             0.0006395     (*)
+     32000        196.227             0.0132809             0.0025258             0.0005911     (*)
+
+UMBRAL 10:
+         n           t(n)    t/(n^0.700)*log(n)    t/(n^0.860)*log(n)    t/(n^1.000)*log(n)
+       500          3.218             0.0066818             0.0024721             0.0010356     (*)
+      1000          6.133             0.0070524             0.0023353             0.0008878     (*)
+      2000         12.921             0.0083121             0.0024635             0.0008500     (*)
+      4000         26.615             0.0096587             0.0025621             0.0008022     (*)
+      8000         49.404             0.0101853             0.0024181             0.0006871     (*)
+     16000         98.144             0.0115635             0.0024571             0.0006337     (*)
+     32000        191.995             0.0129945             0.0024714             0.0005784     (*)
+
+UMBRAL 100:
+         n           t(n)    t/(n^0.700)*log(n)    t/(n^0.860)*log(n)    t/(n^1.000)*log(n)
+       500          2.989             0.0062063             0.0022961             0.0009619     (*)
+      1000          6.081             0.0069926             0.0023155             0.0008803     (*)
+      2000         12.951             0.0083314             0.0024692             0.0008519     (*)
+      4000         25.602             0.0092911             0.0024645             0.0007717     (*)
+      8000         49.565             0.0102185             0.0024260             0.0006894     (*)
+     16000         97.532             0.0114914             0.0024418             0.0006297     (*)
+     32000        193.417             0.0130908             0.0024897             0.0005827     (*)
+
+COTAS
+ - Inferior: (n^0.700)*log(n)
+ - Ajustada: (n^0.860)*log(n)       Constante a la que tiende: 0.0024146
+ - Sobreestimada: (n^1.000)*log(n)
+                        
+ NOTAS: En la ordenación con el vector inicializado de forma ascendente el que mejores tiempos presenta es en el que se usa el umbral 100 porque con el umbral tan alto es necesario pasar menos veces por el algoritmo de quicksort, y el algoritmo de insercción en casos de vectores ordenados ascendentemente es muy eficiente.
+                            
+---
+CONCLUSIÓN
+    La complejidad teórica de este algoritmo es en el mejor caso O(n*log(n)) y en su peor caso de O(n^2). Aunque las cotas teóricas son estas, las obtenidas en la práctica fueron diferentes.
+    Tras observar los tiempos de ejecución del algoritmo trabajando en los 3 umbrales y con las diversas inicializaciones podemos observar que el mejor umbral es 100, que hace que los tiempos sean menores que cuando escoges otro de los 2 ya que por el funcionamiento del programa, el algoritmo de insercción realiza más carga que el Quicksort y la ordenación por insercción es muy efectiva sobre todo en vectores ordenados ascendentemente y menos efectivos con los algoritmos ordenados descendentemente. 
+
+    
+MEJOR Y PEOR UMBRAL SEGÚN INICIALIZACIÓN
+    
+    ALEATORIA
+    -> MEJOR:     1
+    -> PEOR:    100
+
+    DESCENDENTE
+    -> MEJOR:    10
+    -> PEOR:      1
+    
+    ASCENDENTE
+    -> MEJOR:   100
+    -> PEOR:      1
+    
+APUNTE SOBRE ANOMALIAS
+    Durante la comprobación de los datos se notaron varias anomalías tanto en la columna 4 como en la columna 5 dado que la primera tiene que seguir un incremento mientras que la segunda un decremento de los valores que se presentan.
