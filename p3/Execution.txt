@@ -1,0 +1,1 @@
+gcc P3.c  -o P3 -lm

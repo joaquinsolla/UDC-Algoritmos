@@ -1,0 +1,95 @@
+INFORME P3 DE ALGORITMOS - ÁRBOLES BINARIOS DE BÚSQUEDA
+
+[Grupo 2.5]
+ - Joaquín Solla Vázquez <joaquin.solla@udc.es>
+ - Fernando Añón Blanco  <fernando.anon.blanco@udc.es>
+
+OBJETIVO: El objetivo de esta práctica es estudiar la complejidad 
+computacional de las operaciones insertar y buscar en árboles 
+binarios de búsqueda de números enteros y con un campo con la 
+frecuencia de apariciones.
+
+EQUIPO:
+    Ordenador: Lenovo ideapad 310-15ISK
+    Procesador: Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
+    Memoria RAM: 8 GB
+    SO: KDE neon User Edition 5.20 x86_64
+
+
+
+Los tiempos en microsegundos de los algoritmos son los siguientes:
+
+                            ####################
+                            #    INSERCIÓN     #
+                            ####################
+
+Insercion de n elementos
+     n           t(n)          t(n)/n    t(n)/n^1.25     t(n)/n^1.4
+  8000       1642.000        0.205250       0.021703       0.005637
+ 16000       3329.000        0.208063       0.018500       0.004331
+ 32000       8450.000        0.264062       0.019743       0.004165
+ 64000      18906.000        0.295406       0.018573       0.003531
+128000      45302.000        0.353922       0.018711       0.003206
+256000     113043.000        0.441574       0.019631       0.003032
+
+Cota Subestimada: n
+Cota Ajustada: n^1.25
+Cota Sobreestimada: n^1.4
+
+# OBSERVACIONES: Aunque tanto la cota ajustada como la sobreestimada 
+decrecen en la insercion en relación al crecimiento del valor de n, 
+la cota subestimada tiene a crecer; así como el tiempo que tarda en 
+ejecutarse el algoritmo, que va aumentando exponencialmente.
+Los tiempos nunca son menores a 500 microsegundos por lo que el 
+código no se tiene que repetir.
+                 La complejidad de este algoritmo tiende a O(n^1.25)
+                            
+                            
+                            
+                            ####################
+                            #     BÚSQUEDA     #
+                            ####################        
+                                             
+Busqueda de n elementos
+     n           t(n)          t(n)/n    t(n)/n^1.26     t(n)/n^1.4
+  8000       1313.000        0.164125       0.015862       0.004508
+ 16000       3171.000        0.198187       0.015996       0.004125
+ 32000       7769.000        0.242781       0.016363       0.003830
+ 64000      17192.000        0.268625       0.015120       0.003211
+128000      49131.000        0.383836       0.018041       0.003477
+256000     129979.000        0.507730       0.019929       0.003486
+
+
+Cota Subestimada: n
+Cota Ajustada: n^1.26
+Cota Sobreestimada: n^1.4
+
+# OBSERVACIONES: Como en el algoritmo anterior, los tiempos de 
+ejecución se reflejan en función de n, presentando un incremento 
+exponencial atendiendo al aumento de los valores de este último.
+Los tiempos nunca son menores a 500 microsegundos por lo que el 
+código no se tiene que repetir.
+		La complejidad de este algoritmo tiende a O(n^1.26)
+                 
+              
+                 
+                            ############################
+                            #   INSERCIÓN VS BÚSQUEDA  #
+                            ############################
+
+     n       t_ins(n)         t_bus(n)
+  8000           1642             1313    
+ 16000           3329             3171    
+ 32000           8450             7769    
+ 64000          18906            17192    
+128000          45302            49131    
+256000         113043           129979 
+            
+                            
+# CONCLUSIONES: Tras analizar los datos obtenidos al ejecutar ambos 
+algoritmos para el propósito de la práctica podemos observar que 
+presentan una complejidad similar, y ambos arrastran una pequeña 
+diferencia en proporción al aumento del valor de n, aunque el 
+algoritmo de insercion en el árbol binario presentan tiempos un poco
+mejores cuando el n es mayor mientras que el algoritmo de búsqueda
+tarda más proporcionalmente con el de inserción a medida que n aumenta.
